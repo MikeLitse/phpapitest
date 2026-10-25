@@ -7,7 +7,7 @@
         public function getConnection(): PDO{
             $dsn=
                 "mysql:host={$this->host};
-                name={$this->name};
+                dbname={$this->name};
                 user={$this->user};
                 password={$this->password};"
             ;
