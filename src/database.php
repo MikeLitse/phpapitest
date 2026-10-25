@@ -12,7 +12,13 @@
                 password={$this->password};"
             ;
 
-            return new PDO($dsn, $this->user, $this->password);
+            //returbs the json with the correct format
+            return new PDO($dsn, $this->user, $this->password,
+            [
+                PDO::ATTR_EMULATE_PREPARES => false,
+                PDO::ATTR_STRINGIFY_FETCHES =>false
+            ]
+            );
         }
     }
 ?>

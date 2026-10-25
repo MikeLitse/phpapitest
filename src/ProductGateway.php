@@ -12,8 +12,11 @@
 
             $data=[]; 
 
-            while ($row = $stmt->fetchAll(PDO::FETCH_ASSOC)){
-                $data= $row;
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+                $row["is_available"] = (bool) $row["is_available"];//cast ass booleans
+
+                $data[]= $row;
             }
             //assoc array
             return $data;
