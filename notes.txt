@@ -8,3 +8,7 @@ POST: (json)
 	"size": 30,
 	"is_available": true
 }
+
+http://localhost/phpapitest/products/1 only allows get patch delete 
+
+http://localhost/phpapitest/products can use post if used with json

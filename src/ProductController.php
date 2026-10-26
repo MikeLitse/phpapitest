@@ -32,7 +32,7 @@
                     //cast into array so it doesnt return null
 		            $data= (array) json_decode(file_get_contents("php://input"),true); //true returns a assoc array
 
-                    $errors= $this->getValidationErrors($data);
+                    $errors= $this->getValidationErrors($data, false);
 
                     if(!empty($errors)){
                         http_response_code(422);
@@ -51,6 +51,20 @@
                         "rows" => $rows
                     ]);
                     break;
+
+                case "DELETE":
+                    $rows= $this->gateway->delete($id);
+
+                    echo json_encode([
+                        "message" => "Product $id deleted",
+                        "rows" =>$rows
+                    ]);
+                    break;
+
+                default:
+                    http_response_code(405);
+                    header("Allow: GET, PATCH, DELETE");
+
             }
             
         }
@@ -91,10 +105,10 @@
             }
         }
 
-        private function getValidationErrors(array $data): array{
+        private function getValidationErrors(array $data, bool $is_new= true): array{
             $errors= [];
 
-            if(empty($data["name"])){
+            if($is_new && empty($data["name"])){
                 $errors[]= "name is required";
             }
 
