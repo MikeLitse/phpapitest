@@ -10,6 +10,7 @@
     //error handling
     set_exception_handler("ErrorHandler::handleException");
 
+    //make the req return a json
     header("Content-type: application/json; charset=UTF-8");
 
     //returns an array of the url parts
