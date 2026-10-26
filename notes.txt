@@ -1,0 +1,9 @@
+URL: http://localhost/phpapitest/products
+
+POST: (json)
+
+{
+	"name": "what",
+	"size": 30,
+	"is_available": true
+}

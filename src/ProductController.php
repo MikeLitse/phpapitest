@@ -23,10 +23,11 @@
                     echo json_encode($this->gateway->getAll());
                     break;
                 case "POST":
-		            $data= (array) json_decode(file_get_contents("php://input"), true);//identify string
+                    //cast into array so it doesnt return null
+		            $data= (array) json_decode(file_get_contents("php://input"),true); //true returns a assoc array
 
-		            var_dump($data);
-		            break;	
+                    var_dump($data);
+                    break;
             }
         }
     }
