@@ -28,6 +28,8 @@
 
                     $id= $this->gateway->create($data);
 
+                    http_response_code(201);
+
                     echo json_encode([
                         "message" => "Product Created",
                         "id" => $id

@@ -2,6 +2,7 @@ URL: http://localhost/phpapitest/products
 
 POST: (json)
 
+//you can add with missing values
 {
 	"name": "what",
 	"size": 30,

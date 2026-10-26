@@ -7,6 +7,7 @@
         require __DIR__ . "/src/$class.php";
     });
 
+    set_error_handler("ErrorHandler::handleError");
     //error handling
     set_exception_handler("ErrorHandler::handleException");
 
