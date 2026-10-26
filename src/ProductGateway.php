@@ -14,7 +14,7 @@
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
-                $row["is_available"] = (bool) $row["is_available"];//cast ass booleans
+                $row["is_available"] = (bool) $row["is_available"];//cast as booleans
 
                 $data[]= $row;
             }
