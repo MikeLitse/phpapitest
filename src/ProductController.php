@@ -26,6 +26,16 @@
                     //cast into array so it doesnt return null
 		            $data= (array) json_decode(file_get_contents("php://input"),true); //true returns a assoc array
 
+                    $errors= $this->getValidationErrors($data);
+
+                    if(!empty($errors)){
+                        http_response_code(422);
+                        echo json_encode([
+                            "errors" => $errors
+                        ]);
+                        break;
+                    }
+
                     $id= $this->gateway->create($data);
 
                     http_response_code(201);
@@ -36,6 +46,22 @@
                     ]);
                     break;
             }
+        }
+
+        private function getValidationErrors(array $data): array{
+            $errors= [];
+
+            if(empty($data["name"])){
+                $errors[]= "name is required";
+            }
+
+            if(array_key_exists("size", $data)){
+                if(filter_var($data["size"], FILTER_VALIDATE_INT) === false){
+                    $errors[]= "size must be an int"; 
+                }
+            }
+
+            return $errors;
         }
     }
 ?>
