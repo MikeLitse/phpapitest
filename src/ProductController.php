@@ -26,7 +26,12 @@
                     //cast into array so it doesnt return null
 		            $data= (array) json_decode(file_get_contents("php://input"),true); //true returns a assoc array
 
-                    var_dump($data);
+                    $id= $this->gateway->create($data);
+
+                    echo json_encode([
+                        "message" => "Product Created",
+                        "id" => $id
+                    ]);
                     break;
             }
         }

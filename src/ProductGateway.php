@@ -23,7 +23,7 @@
 
         }
 
-       /*public function create(array $data) : string{
+        public function create(array $data) : string{
             $sql ="INSERT INTO product (name, size, is_available)
                    VALUES (:name,:size,:is_available);";
 
@@ -38,6 +38,6 @@
             return $this->conn->lastInsertId();
 
         }
-        */
+        
     }
 ?>
