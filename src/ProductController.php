@@ -22,9 +22,7 @@
                 case "GET":
                     echo json_encode($this->gateway->getAll());
                     break;
-                case "POST":
-
-                    break;
+                
             }
         }
     }
