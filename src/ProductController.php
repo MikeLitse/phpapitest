@@ -45,6 +45,11 @@
                         "id" => $id
                     ]);
                     break;
+
+                default :
+                    //check allowed methods
+                    http_response_code(405);
+                    header("Allow: GET, POST");
             }
         }
 
